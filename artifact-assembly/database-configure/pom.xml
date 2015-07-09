@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.macys.sstpac</groupId>
+		<artifactId>artifact-assembly</artifactId>
+		<version>1.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>database-configure</artifactId>
+	<name>Database Configuration</name>
+	<packaging>jar</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>db2</groupId>
+			<artifactId>db2jcc</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/db2jcc-2.8.46.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>db2</groupId>
+			<artifactId>db2jcc_license_cu</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/db2jcc_license_cu-2.8.46.jar</systemPath>
+		</dependency>
+	</dependencies>
+</project>

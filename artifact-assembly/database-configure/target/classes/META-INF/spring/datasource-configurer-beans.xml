@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	 xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<context:component-scan base-package="com.macys.sstpac.databaseConfigure" />
+     
+    <util:properties id="mySqlDbQueries" location="classpath:mySqlDbQueries.properties"/>
+    <util:properties id="db2SqlDbQueries" location="classpath:db2SqlDbQueries.properties"/>
+    
+	<bean id="mcomReportingDB"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value=" com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:mysql://localhost/sstpac" />
+		<property name="username" value="ecomsst" />
+		<property name="password" value="ecomsst" />
+	</bean>
+
+	<bean id="mcomReportingjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="mcomReportingDB"></property>
+	</bean>
+
+	<bean id="mcomStandByDB"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value=" com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://localhost:60000/MCPS" />
+		<property name="username" value="mcyread" />
+		<property name="password" value="WzwKJ26s" />
+	</bean>
+
+	<bean id="mcomStandByjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="mcomStandByDB"></property>
+	</bean>
+
+
+	<bean id="bcomReportingDB"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://localhost:60004/BLMRPTDB" />
+		<property name="username" value="blmread" />
+		<property name="password" value="only4read" />
+	</bean>
+
+	<bean id="bcomReportingjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="bcomReportingDB"></property>
+	</bean>
+
+	<bean id="bcomStandbyDB"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://localhost:60020/BCPS	" />
+		<property name="username" value="blmread" />
+		<property name="password" value="WzwKJ26s" />
+	</bean>
+
+	<bean id="bcomStandByjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="bcomStandbyDB"></property>
+	</bean>
+
+
+	<bean id="mysqldb"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/sstpac" />
+		<property name="username" value="ecomsst" />
+		<property name="password" value="ecomsst" />
+	</bean>
+
+	<bean id="mysqldbjdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="mysqldb"></property>
+	</bean>  
+</beans>
+	
+	
+	
+	
+	
+	
